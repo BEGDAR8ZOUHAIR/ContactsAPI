@@ -16,8 +16,6 @@ namespace ContactsAPI.Controllers
             this.dbContext = dbContext;
         }
 
-
-
         [HttpGet]
         public async Task<IActionResult> GetContacts()
         {
@@ -89,11 +87,6 @@ namespace ContactsAPI.Controllers
             await dbContext.SaveChangesAsync();
             return Ok();
         }
-
-
-
-
-
 
 
 
