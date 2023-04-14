@@ -45,6 +45,31 @@ namespace ContactsAPI.Controllers
 
         }
 
+        [HttpPut]
+        [Route ("{id:guid}")]
+
+        public async Task<IActionResult> UpdateContact(Guid id, UpdateContactRequest updateContactRequest)
+        {
+            var contact = await dbContext.Contacts.FindAsync(id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+            contact.Name = updateContactRequest.Name;
+            contact.Email = updateContactRequest.Email;
+            contact.Phone = updateContactRequest.Phone;
+            await dbContext.SaveChangesAsync();
+            return Ok(contact);
+        }
+
+        
+
+
+
+
+
+
+
 
     }
 }
